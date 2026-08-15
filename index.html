@@ -1,0 +1,2069 @@
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Deep Awareness</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #030B1A;
+            color: #F1EBDD;
+
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #D9B66B;
+            color: #030B1A;
+        }
+
+
+        /* =====================================================
+           CORES
+        ===================================================== */
+
+        :root {
+
+            --night: #030B1A;
+
+            --blue: #071A31;
+
+            --blue-light: #102B47;
+
+            --gold: #D9B66B;
+
+            --gold-soft: rgba(217, 182, 107, 0.45);
+
+            --cream: #F1EBDD;
+
+            --muted: #A5A5A1;
+
+        }
+
+
+        /* =====================================================
+           LOADER
+        ===================================================== */
+
+        .loader {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            background: var(--night);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+
+        }
+
+        .loader.hidden {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+        }
+
+        .loader-title {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 28px;
+
+            letter-spacing: 0.08em;
+
+            color: var(--gold);
+
+            opacity: 0;
+
+            animation: loaderText 1.8s ease forwards;
+
+        }
+
+        .loader-line {
+
+            width: 0;
+
+            height: 1px;
+
+            margin-top: 20px;
+
+            background: var(--gold);
+
+            animation: loaderLine 1.6s ease forwards;
+
+        }
+
+        @keyframes loaderText {
+
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes loaderLine {
+
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 70px;
+            }
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 28px 45px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            transition:
+                background 0.5s ease,
+                padding 0.5s ease,
+                backdrop-filter 0.5s ease;
+
+        }
+
+        .nav.scrolled {
+
+            padding: 18px 45px;
+
+            background: rgba(3, 11, 26, 0.72);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(217,182,107,0.08);
+
+        }
+
+        .logo {
+
+            color: var(--cream);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 0.3em;
+
+        }
+
+        .menu-button {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--cream);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 8px;
+
+            letter-spacing: 0.3em;
+
+        }
+
+        .menu-icon {
+
+            width: 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+        .menu-icon span {
+
+            width: 100%;
+
+            height: 1px;
+
+            background: var(--gold);
+
+            transition: 0.4s ease;
+
+        }
+
+
+        /* =====================================================
+           MENU OVERLAY
+        ===================================================== */
+
+        .menu-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #102A45,
+                    #030B1A 72%
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.6s ease,
+                visibility 0.6s ease;
+
+        }
+
+        .menu-overlay.open {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+        .menu-close {
+
+            position: absolute;
+
+            top: 28px;
+
+            right: 45px;
+
+            background: none;
+
+            border: none;
+
+            color: var(--cream);
+
+            font-size: 10px;
+
+            letter-spacing: 0.3em;
+
+            cursor: pointer;
+
+        }
+
+        .menu-links {
+
+            text-align: center;
+
+        }
+
+        .menu-links a {
+
+            display: block;
+
+            color: var(--cream);
+
+            text-decoration: none;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(38px, 6vw, 70px);
+
+            font-weight: 300;
+
+            margin: 10px 0;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+        .menu-links a:hover {
+
+            color: var(--gold);
+
+            transform: translateX(10px);
+
+        }
+
+        .menu-sub {
+
+            font-family: "DM Sans", sans-serif !important;
+
+            font-size: 8px !important;
+
+            letter-spacing: 0.35em;
+
+            color: var(--gold) !important;
+
+            margin-bottom: 35px !important;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    #112B48 0%,
+                    #071A31 34%,
+                    #030B1A 75%
+                );
+
+        }
+
+        /* luz central */
+
+        .hero-light {
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(217,182,107,0.10);
+
+            filter: blur(80px);
+
+            animation: breathe 7s ease-in-out infinite;
+
+        }
+
+        @keyframes breathe {
+
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.9;
+            }
+
+        }
+
+
+        /* círculo exterior */
+
+        .hero-circle {
+
+            position: absolute;
+
+            width: 560px;
+            height: 560px;
+
+            border: 1px solid rgba(217,182,107,0.30);
+
+            border-radius: 50%;
+
+            animation:
+                circleAppear 2s ease forwards,
+                slowRotate 40s linear infinite;
+
+            opacity: 0;
+
+        }
+
+        .hero-circle-inner {
+
+            position: absolute;
+
+            width: 390px;
+            height: 390px;
+
+            border: 1px solid rgba(217,182,107,0.13);
+
+            border-radius: 50%;
+
+            animation:
+                circleAppear 2.5s ease forwards,
+                slowRotateReverse 32s linear infinite;
+
+            opacity: 0;
+
+        }
+
+        @keyframes circleAppear {
+
+            0% {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        @keyframes slowRotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @keyframes slowRotateReverse {
+
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+
+        }
+
+
+        /* pequenos pontos */
+
+        .star {
+
+            position: absolute;
+
+            width: 2px;
+            height: 2px;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+
+            opacity: 0.4;
+
+            animation: starPulse 5s ease-in-out infinite;
+
+        }
+
+        .star.one {
+            top: 25%;
+            left: 30%;
+        }
+
+        .star.two {
+            top: 35%;
+            right: 27%;
+            animation-delay: 1s;
+        }
+
+        .star.three {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        .star.four {
+            bottom: 30%;
+            right: 28%;
+            animation-delay: 3s;
+        }
+
+        @keyframes starPulse {
+
+            0%,100% {
+                opacity: 0.15;
+                transform: scale(0.7);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.5);
+            }
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            opacity: 0;
+
+            animation: heroContent 1.8s 0.8s ease forwards;
+
+        }
+
+        @keyframes heroContent {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .small-title {
+
+            font-size: 9px;
+
+            letter-spacing: 0.42em;
+
+            color: var(--gold);
+
+            margin-bottom: 30px;
+
+        }
+
+        .hero h1 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(70px, 11vw, 145px);
+
+            font-weight: 300;
+
+            line-height: 0.75;
+
+            letter-spacing: -0.03em;
+
+        }
+
+        .hero h1 span {
+
+            color: var(--gold);
+
+        }
+
+        .hero-line {
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--gold);
+
+            margin: 38px auto 25px;
+
+            animation: lineGrow 1.5s 1.8s ease forwards;
+
+        }
+
+        @keyframes lineGrow {
+
+            to {
+                width: 55px;
+            }
+
+        }
+
+        .hero p {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 25px;
+
+            color: #D7D0C1;
+
+        }
+
+
+        /* =====================================================
+           SCROLL
+        ===================================================== */
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 32px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 8px;
+
+            letter-spacing: 0.35em;
+
+            color: rgba(241,235,221,0.45);
+
+            animation: scrollFloat 3s ease-in-out infinite;
+
+        }
+
+        .scroll::after {
+
+            content: "";
+
+            display: block;
+
+            width: 1px;
+
+            height: 35px;
+
+            margin: 12px auto 0;
+
+            background: linear-gradient(
+                var(--gold),
+                transparent
+            );
+
+        }
+
+        @keyframes scrollFloat {
+
+            0%,100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, 7px);
+            }
+
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .image-section {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 120px 25px;
+
+            position: relative;
+
+            background: var(--night);
+
+        }
+
+        .image-section::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 50%;
+
+            width: 1px;
+
+            height: 140px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    var(--gold)
+                );
+
+            opacity: 0.45;
+
+        }
+
+        .image-content {
+
+            width: min(850px,100%);
+
+            text-align: center;
+
+            opacity: 0;
+
+            transform: translateY(60px) scale(0.97);
+
+            transition:
+                opacity 1.4s ease,
+                transform 1.5s cubic-bezier(.2,.7,.2,1);
+
+        }
+
+        .image-content.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+        .image-content img {
+
+            width: min(650px,90%);
+
+            display: block;
+
+            margin: auto;
+
+            filter:
+                drop-shadow(
+                    0 0 70px
+                    rgba(217,182,107,0.16)
+                );
+
+            transition:
+                transform 1.5s ease;
+
+        }
+
+        .image-content:hover img {
+
+            transform: scale(1.015);
+
+        }
+
+        .image-text {
+
+            margin-top: 25px;
+
+        }
+
+        .image-text h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px,6vw,75px);
+
+            font-weight: 300;
+
+            color: var(--gold);
+
+        }
+
+        .image-text p {
+
+            max-width: 500px;
+
+            margin: 20px auto;
+
+            font-size: 12px;
+
+            line-height: 1.9;
+
+            color: var(--muted);
+
+        }
+
+
+        /* =====================================================
+           THEMES
+        ===================================================== */
+
+        .themes {
+
+            min-height: 100vh;
+
+            padding: 140px 7vw;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #0C2038,
+                    #030B1A 70%
+                );
+
+            text-align: center;
+
+        }
+
+        .section-label {
+
+            font-size: 9px;
+
+            letter-spacing: 0.4em;
+
+            color: var(--gold);
+
+        }
+
+        .themes h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(55px,7vw,90px);
+
+            font-weight: 300;
+
+            margin-top: 25px;
+
+            line-height: 0.9;
+
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition: 1s ease;
+
+        }
+
+        .themes h2.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .themes h2 em {
+
+            color: var(--gold);
+
+            font-style: italic;
+
+        }
+
+        .themes-grid {
+
+            max-width: 1100px;
+
+            margin: 90px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 45px;
+
+        }
+
+        .theme {
+
+            position: relative;
+
+            min-height: 340px;
+
+            padding: 35px 30px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            transform: translateY(60px);
+
+            transition:
+                opacity 1s ease,
+                transform 1s cubic-bezier(.2,.7,.2,1);
+
+        }
+
+        .theme.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .theme:nth-child(2) {
+
+            transition-delay: 0.15s;
+
+        }
+
+        .theme:nth-child(3) {
+
+            transition-delay: 0.3s;
+
+        }
+
+        .theme::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border: 1px solid rgba(217,182,107,0.0);
+
+            border-radius: 50%;
+
+            transform: scale(0.7);
+
+            transition:
+                border 1.5s ease,
+                transform 1.5s cubic-bezier(.2,.7,.2,1);
+
+        }
+
+        .theme.visible::before {
+
+            border-color:
+                rgba(217,182,107,0.42);
+
+            transform: scale(1);
+
+        }
+
+        .theme-number {
+
+            position: relative;
+
+            color: var(--gold);
+
+            font-size: 9px;
+
+            letter-spacing: 0.25em;
+
+            margin-bottom: 30px;
+
+        }
+
+        .theme h3 {
+
+            position: relative;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 32px;
+
+            font-weight: 300;
+
+        }
+
+        .theme p {
+
+            position: relative;
+
+            max-width: 210px;
+
+            margin-top: 20px;
+
+            color: #9D9D99;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           QUOTE
+        ===================================================== */
+
+        .quote {
+
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 25px;
+
+            background: #030B1A;
+
+        }
+
+        .quote-inner {
+
+            max-width: 800px;
+
+            opacity: 0;
+
+            transform: translateY(40px);
+
+            transition: 1.3s ease;
+
+        }
+
+        .quote-inner.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .quote-symbol {
+
+            color: var(--gold);
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 65px;
+
+            line-height: 0.5;
+
+            margin-bottom: 35px;
+
+        }
+
+        .quote h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(35px,5vw,65px);
+
+            font-weight: 300;
+
+            line-height: 1.1;
+
+        }
+
+        .quote p {
+
+            margin-top: 30px;
+
+            font-size: 9px;
+
+            letter-spacing: 0.3em;
+
+            color: var(--gold);
+
+        }
+
+
+        /* =====================================================
+           APPROACH
+        ===================================================== */
+
+        .approach {
+
+            min-height: 90vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 120px 25px;
+
+            text-align: center;
+
+            background: var(--cream);
+
+            color: #152033;
+
+        }
+
+        .approach-inner {
+
+            max-width: 750px;
+
+            opacity: 0;
+
+            transform: translateY(50px);
+
+            transition: 1.2s ease;
+
+        }
+
+        .approach-inner.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .approach .section-label {
+
+            color: #9B762E;
+
+        }
+
+        .approach h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(50px,7vw,90px);
+
+            font-weight: 300;
+
+            line-height: 0.9;
+
+            margin-top: 25px;
+
+        }
+
+        .approach h2 em {
+
+            color: #9B762E;
+
+        }
+
+        .approach p {
+
+            max-width: 570px;
+
+            margin: 40px auto 0;
+
+            color: #65645E;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact {
+
+            min-height: 80vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 25px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #122B47,
+                    #030B1A 70%
+                );
+
+        }
+
+        .contact-inner {
+
+            opacity: 0;
+
+            transform: translateY(50px);
+
+            transition: 1.2s ease;
+
+        }
+
+        .contact-inner.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .contact h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(55px,8vw,100px);
+
+            font-weight: 300;
+
+            line-height: 0.85;
+
+        }
+
+        .contact h2 em {
+
+            color: var(--gold);
+
+        }
+
+        .contact p {
+
+            margin: 35px auto;
+
+            max-width: 450px;
+
+            color: #A5A5A1;
+
+            font-size: 12px;
+
+            line-height: 1.9;
+
+        }
+
+        .contact a {
+
+            display: inline-block;
+
+            color: var(--gold);
+
+            text-decoration: none;
+
+            border-bottom: 1px solid var(--gold);
+
+            padding-bottom: 7px;
+
+            font-size: 10px;
+
+            letter-spacing: 0.2em;
+
+            text-transform: uppercase;
+
+            transition:
+                letter-spacing 0.4s ease;
+
+        }
+
+        .contact a:hover {
+
+            letter-spacing: 0.3em;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding: 35px;
+
+            text-align: center;
+
+            background: var(--night);
+
+            border-top:
+                1px solid rgba(217,182,107,0.15);
+
+            color: #777;
+
+            font-size: 8px;
+
+            letter-spacing: 0.2em;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 750px) {
+
+            .nav {
+
+                padding: 22px 25px;
+
+            }
+
+            .nav.scrolled {
+
+                padding: 16px 25px;
+
+            }
+
+            .menu-close {
+
+                right: 25px;
+
+            }
+
+            .hero-circle {
+
+                width: 380px;
+                height: 380px;
+
+            }
+
+            .hero-circle-inner {
+
+                width: 270px;
+                height: 270px;
+
+            }
+
+            .hero h1 {
+
+                font-size: 72px;
+
+            }
+
+            .hero p {
+
+                font-size: 21px;
+
+            }
+
+            .themes {
+
+                padding:
+                    110px 20px;
+
+            }
+
+            .themes-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+
+            }
+
+            .theme {
+
+                min-height: 300px;
+
+            }
+
+            .theme::before {
+
+                width: 220px;
+                height: 220px;
+
+            }
+
+            .image-content img {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOADER
+    ===================================================== -->
+
+    <div class="loader">
+
+        <div class="loader-title">
+            deep awareness
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAV
+    ===================================================== -->
+
+    <nav class="nav">
+
+        <a
+            href="#inicio"
+            class="logo"
+        >
+            DEEP AWARENESS
+        </a>
+
+        <button
+            class="menu-button"
+            id="menuOpen"
+        >
+
+            MENU
+
+            <div class="menu-icon">
+
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </button>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MENU
+    ===================================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    >
+
+        <button
+            class="menu-close"
+            id="menuClose"
+        >
+            FECHAR
+        </button>
+
+        <div class="menu-links">
+
+    <a
+        href="#inicio"
+        class="menu-sub"
+    >
+        DEEP AWARENESS
+    </a>
+
+    <a href="#inicio">
+        Início
+    </a>
+
+    <a href="#terapeuta">
+        Sobre a Terapeuta
+    </a>
+
+    <a href="#hipnoterapia">
+        Hipnoterapia
+    </a>
+
+    <a href="#consultas">
+        Consultas
+    </a>
+
+    <a href="#ajuda">
+        Como Posso Ajudar?
+    </a>
+
+    <a href="#faq">
+        FAQ
+    </a>
+
+    <a href="#contacto">
+        Contacto
+    </a>
+
+</div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section
+        class="hero"
+        id="inicio"
+    >
+
+        <div class="hero-light"></div>
+
+        <div class="hero-circle"></div>
+
+        <div class="hero-circle-inner"></div>
+
+
+        <div class="star one"></div>
+        <div class="star two"></div>
+        <div class="star three"></div>
+        <div class="star four"></div>
+
+
+        <div class="hero-content">
+
+            <div class="small-title">
+
+                HIPNOTERAPIA · PSICOLOGIA
+
+            </div>
+
+
+            <h1>
+
+                deep
+
+                <br>
+
+                <span>awareness</span>
+
+            </h1>
+
+
+            <div class="hero-line"></div>
+
+
+            <p>
+
+                A arquitetura da tua paz
+                <br>
+                já habita em ti.
+
+            </p>
+
+        </div>
+
+
+        <div class="scroll">
+
+            SCROLL
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IMAGE
+    ===================================================== -->
+
+    <section
+        class="image-section"
+        id="imagem"
+    >
+
+        <div class="image-content reveal">
+
+            <img
+                src="imagens/deep-awareness.png"
+                alt="Deep Awareness"
+            >
+
+
+            <div class="image-text">
+
+                <h2>
+                    Permite-te parar.
+                </h2>
+
+
+                <p>
+
+                    Existe um espaço entre o ruído
+                    e a resposta. Um lugar onde a
+                    mente pode abrandar e voltar a
+                    escutar.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         THEMES
+    ===================================================== -->
+
+    <section
+        class="themes"
+        id="temas"
+    >
+
+        <div class="section-label">
+
+            MAJOR THEMES
+
+        </div>
+
+
+        <h2 class="reveal">
+
+            Um espaço para
+
+            <br>
+
+            <em>reencontrar.</em>
+
+        </h2>
+
+
+        <div class="themes-grid">
+
+
+            <div class="theme reveal">
+
+                <div class="theme-number">
+                    01
+                </div>
+
+                <h3>
+                    Ansiedade
+                </h3>
+
+                <p>
+
+                    Abrandar a agitação,
+                    compreender o que
+                    o corpo procura dizer
+                    e recuperar segurança.
+
+                </p>
+
+            </div>
+
+
+            <div class="theme reveal">
+
+                <div class="theme-number">
+                    02
+                </div>
+
+                <h3>
+                    Clareza
+                </h3>
+
+                <p>
+
+                    Criar espaço interior
+                    para escutar, escolher
+                    e reencontrar o teu
+                    próprio ritmo.
+
+                </p>
+
+            </div>
+
+
+            <div class="theme reveal">
+
+                <div class="theme-number">
+                    03
+                </div>
+
+                <h3>
+                    Confiança
+                </h3>
+
+                <p>
+
+                    Reconectar com os
+                    recursos internos e
+                    desenvolver uma relação
+                    mais segura contigo.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         QUOTE
+    ===================================================== -->
+
+    <section class="quote">
+
+        <div class="quote-inner reveal">
+
+            <div class="quote-symbol">
+                “
+            </div>
+
+            <h2>
+
+                Talvez não precises
+                de encontrar uma
+                nova versão de ti.
+
+                <br><br>
+
+                Talvez precises apenas
+                de voltar a escutar
+                a que já existe.
+
+            </h2>
+
+            <p>
+                DEEP AWARENESS
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         APPROACH
+    ===================================================== -->
+
+    <section
+        class="approach"
+        id="abordagem"
+    >
+
+        <div class="approach-inner reveal">
+
+            <div class="section-label">
+
+                A ABORDAGEM
+
+            </div>
+
+
+            <h2>
+
+                Não é sobre
+
+                <br>
+
+                <em>perder o controlo.</em>
+
+            </h2>
+
+
+            <p>
+
+                A Hipnoterapia Ericksoniana é um
+                convite suave para fazer uma pausa.
+                Um espaço seguro, respeitador e
+                individual onde podes desacelerar,
+                explorar e aceder aos recursos que
+                já existem dentro de ti.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ===================================================== -->
+
+    <section
+        class="contact"
+        id="contacto"
+    >
+
+        <div class="contact-inner reveal">
+
+            <div class="section-label">
+
+                DEEP AWARENESS
+
+            </div>
+
+
+            <h2>
+
+                O teu ritmo.
+
+                <br>
+
+                <em>O teu espaço.</em>
+
+            </h2>
+
+
+            <p>
+
+                Consultas de Hipnoterapia Ericksoniana
+                presencialmente em Ponta Delgada
+                ou online.
+
+            </p>
+
+
+            <a href="#">
+
+                Entrar em contacto
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        DEEP AWARENESS · HIPNOTERAPIA ERICKSONIANA
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           LOADER
+        ===================================================== */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                setTimeout(
+                    function () {
+
+                        document
+                            .querySelector(".loader")
+                            .classList
+                            .add("hidden");
+
+                    },
+                    1800
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           NAVBAR AO FAZER SCROLL
+        ===================================================== */
+
+        const nav =
+            document.querySelector(".nav");
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 50) {
+
+                    nav.classList.add("scrolled");
+
+                } else {
+
+                    nav.classList.remove("scrolled");
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           MENU
+        ===================================================== */
+
+        const menuOpen =
+            document.getElementById("menuOpen");
+
+        const menuClose =
+            document.getElementById("menuClose");
+
+        const menuOverlay =
+            document.getElementById("menuOverlay");
+
+
+        menuOpen.addEventListener(
+            "click",
+            function () {
+
+                menuOverlay.classList.add("open");
+
+                document.body.style.overflow = "hidden";
+
+            }
+        );
+
+
+        menuClose.addEventListener(
+            "click",
+            function () {
+
+                menuOverlay.classList.remove("open");
+
+                document.body.style.overflow = "";
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(".menu-links a")
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            menuOverlay
+                                .classList
+                                .remove("open");
+
+                            document.body.style.overflow = "";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target
+                                    .classList
+                                    .add("visible");
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach(
+                function (element) {
+
+                    observer.observe(element);
+
+                }
+            );
+
+
+    </script>
+
+
+</body>
+
+</html>
