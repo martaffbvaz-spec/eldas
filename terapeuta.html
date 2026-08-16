@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sobre a Terapeuta | Deep Awareness</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ================================
+           BASE
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #061326;
+            color: #eee6d2;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ================================
+           FUNDO
+        ================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(38, 79, 119, 0.32),
+                    transparent 45%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(18, 53, 87, 0.25),
+                    transparent 40%
+                );
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ================================
+           NAVEGAÇÃO
+        ================================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 90px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6vw;
+
+            z-index: 100;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(4, 14, 30, 0.85),
+                transparent
+            );
+
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            color: #e8c477;
+            text-decoration: none;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
+
+        .menu-button {
+            border: none;
+            background: transparent;
+
+            color: #e8c477;
+
+            font-family: "DM Sans", sans-serif;
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .menu-icon {
+            width: 28px;
+        }
+
+        .menu-icon span {
+            display: block;
+
+            height: 1px;
+
+            background: #e8c477;
+
+            margin: 6px 0;
+        }
+
+        /* ================================
+           MENU
+        ================================= */
+
+        .menu {
+            position: fixed;
+            inset: 0;
+
+            background: #07152a;
+
+            z-index: 200;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.5s ease;
+        }
+
+        .menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-close {
+            position: absolute;
+
+            top: 35px;
+            right: 6vw;
+
+            background: transparent;
+            border: none;
+
+            color: #e8c477;
+
+            letter-spacing: 3px;
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+
+            text-align: center;
+
+            gap: 22px;
+        }
+
+        .menu-links a {
+            color: #eee6d2;
+
+            text-decoration: none;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(35px, 5vw, 60px);
+
+            transition: 0.3s;
+        }
+
+        .menu-links a:hover {
+            color: #e8c477;
+        }
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            padding: 150px 20px 100px;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                rgba(230, 181, 92, 0.12),
+                transparent 65%
+            );
+
+            filter: blur(20px);
+        }
+
+        .hero-content {
+            position: relative;
+
+            max-width: 850px;
+        }
+
+        .label {
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            color: #cdbb92;
+
+            margin-bottom: 35px;
+        }
+
+        .hero h1 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-weight: 300;
+
+            font-size: clamp(70px, 12vw, 150px);
+
+            line-height: 0.8;
+
+            color: #e8c477;
+
+            letter-spacing: 3px;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+
+            color: #eee6d2;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 1px;
+
+            background: #d7ad59;
+
+            margin: 45px auto;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 25px;
+
+            line-height: 1.5;
+
+            color: #d8d0bd;
+        }
+
+        /* ================================
+           INTRO
+        ================================= */
+
+        .intro {
+            padding: 130px 10vw;
+
+            border-top: 1px solid rgba(220, 190, 120, 0.2);
+        }
+
+        .intro-grid {
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 100px;
+
+            align-items: center;
+        }
+
+        .intro-title {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            line-height: 0.95;
+
+            color: #e8c477;
+        }
+
+        .intro-title em {
+            color: #eee6d2;
+        }
+
+        .intro-text {
+            color: #c8c3b8;
+
+            font-size: 16px;
+
+            line-height: 1.9;
+        }
+
+        .intro-text p {
+            margin-bottom: 25px;
+        }
+
+        /* ================================
+           HISTÓRIA
+        ================================= */
+
+        .story {
+            padding: 120px 10vw;
+
+            background:
+                linear-gradient(
+                    rgba(5, 17, 35, 0.92),
+                    rgba(5, 17, 35, 0.98)
+                );
+        }
+
+        .story-inner {
+            max-width: 1000px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .story h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 80px);
+
+            font-weight: 300;
+
+            color: #eee6d2;
+
+            margin-bottom: 50px;
+        }
+
+        .story h2 span {
+            color: #e8c477;
+            font-style: italic;
+        }
+
+        .story-text {
+            max-width: 780px;
+
+            margin: auto;
+
+            font-size: 17px;
+
+            line-height: 2;
+
+            color: #c7c3b9;
+        }
+
+        /* ================================
+           CAMINHO
+        ================================= */
+
+        .journey {
+            padding: 140px 8vw;
+        }
+
+        .section-label {
+            text-align: center;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color: #c5a968;
+
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            max-width: 900px;
+
+            margin: auto;
+
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 0;
+            bottom: 0;
+
+            width: 1px;
+
+            background: rgba(220, 185, 100, 0.35);
+        }
+
+        .timeline-item {
+            width: 50%;
+
+            padding: 0 50px 80px;
+
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            top: 5px;
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #e8c477;
+
+            box-shadow: 0 0 15px #e8c477;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -4px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -4px;
+        }
+
+        .timeline-year {
+            color: #e8c477;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        .timeline-item h3 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 32px;
+
+            font-weight: 400;
+
+            margin-bottom: 15px;
+        }
+
+        .timeline-item p {
+            color: #aaaeb0;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        /* ================================
+           VIDA
+        ================================= */
+
+        .life {
+            padding: 120px 8vw;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(220, 190, 120, 0.15);
+        }
+
+        .life h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            color: #e8c477;
+
+            margin-bottom: 30px;
+        }
+
+        .life p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #c4c1b8;
+
+            line-height: 1.9;
+
+            font-size: 16px;
+        }
+
+        .interests {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-top: 45px;
+        }
+
+        .interest {
+            border: 1px solid rgba(232, 196, 119, 0.4);
+
+            padding: 14px 28px;
+
+            border-radius: 40px;
+
+            color: #d8c89f;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+        }
+
+        /* ================================
+           FRASE FINAL
+        ================================= */
+
+        .final {
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 20px;
+        }
+
+        .final-inner {
+            max-width: 850px;
+        }
+
+        .final-mark {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 80px;
+
+            color: #e8c477;
+        }
+
+        .final h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(40px, 6vw, 75px);
+
+            font-weight: 300;
+
+            line-height: 1.1;
+        }
+
+        .final h2 em {
+            color: #e8c477;
+        }
+
+        .final p {
+            margin-top: 35px;
+
+            color: #aaaeb0;
+
+            letter-spacing: 3px;
+
+            font-size: 11px;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            border-top: 1px solid rgba(220, 190, 120, 0.2);
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #8e9298;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+        }
+
+        /* ================================
+           ANIMAÇÕES
+        ================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            nav {
+                height: 75px;
+                padding: 0 25px;
+            }
+
+            .logo {
+                font-size: 18px;
+                letter-spacing: 3px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 70px;
+            }
+
+            .hero p {
+                font-size: 21px;
+            }
+
+            .intro {
+                padding: 90px 25px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .story {
+                padding: 90px 25px;
+            }
+
+            .journey {
+                padding: 90px 25px;
+            }
+
+            .timeline::before {
+                left: 8px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+
+                margin-left: 0;
+
+                padding-left: 40px;
+
+                padding-right: 10px;
+            }
+
+            .timeline-item::before,
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 4px;
+                right: auto;
+            }
+
+            .life {
+                padding: 90px 25px;
+            }
+
+            .final {
+                min-height: 60vh;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVEGAÇÃO
+    ================================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Deep Awareness
+        </a>
+
+        <button class="menu-button" id="menuOpen">
+
+            MENU
+
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+
+        </button>
+
+    </nav>
+
+
+    <!-- ================================
+         MENU
+    ================================= -->
+
+    <div class="menu" id="menu">
+
+        <button class="menu-close" id="menuClose">
+            FECHAR
+        </button>
+
+        <div class="menu-links">
+
+            <a href="index.html">Início</a>
+
+            <a href="terapeuta.html">Sobre a Terapeuta</a>
+
+            <a href="hipnoterapia.html">Hipnoterapia</a>
+
+            <a href="consultas.html">Consultas</a>
+
+            <a href="ajuda.html">Como Posso Ajudar?</a>
+
+            <a href="faq.html">FAQ</a>
+
+            <a href="contacto.html">Contacto</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <section class="hero">
+
+        <div class="hero-content reveal">
+
+            <div class="label">
+                SOBRE A TERAPEUTA
+            </div>
+
+            <h1>
+                Uma história
+                <br>
+                <span>de presença.</span>
+            </h1>
+
+            <div class="gold-line"></div>
+
+            <p>
+                Antes da terapeuta, existe uma mulher.
+                Uma história feita de caminhos,
+                desafios, aprendizagem e transformação.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         INTRO
+    ================================= -->
+
+    <section class="intro">
+
+        <div class="intro-grid">
+
+            <div class="intro-title reveal">
+
+                Conhecer
+                <br>
+                <em>quem cuida.</em>
+
+            </div>
+
+
+            <div class="intro-text reveal">
+
+                <p>
+                    Aos 50 anos, esta é uma nova etapa
+                    de uma história que começou nas Flores,
+                    nos Açores.
+                </p>
+
+                <p>
+                    Uma mulher trabalhadora, mãe de duas
+                    filhas e alguém que, ao longo da vida,
+                    encontrou diferentes formas de
+                    compreender o ser humano, o corpo,
+                    a mente e aquilo que nos transforma.
+                </p>
+
+                <p>
+                    Hoje, essa experiência encontra-se
+                    com uma nova aventura: continuar a
+                    aprender, aprofundar conhecimentos
+                    e caminhar em direção à Psicologia.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         HISTÓRIA
+    ================================= -->
+
+    <section class="story">
+
+        <div class="story-inner reveal">
+
+            <div class="section-label">
+                UMA HISTÓRIA EM CONSTRUÇÃO
+            </div>
+
+            <h2>
+                De uma vida cheia de
+                <span>desafios</span>,
+                nasceu uma vontade
+                de compreender.
+            </h2>
+
+            <div class="story-text">
+
+                <p>
+                    Formou-se em Análises Clínicas em Lisboa,
+                    um primeiro caminho ligado à saúde e ao
+                    conhecimento do corpo humano.
+                </p>
+
+                <br>
+
+                <p>
+                    Ao longo dos anos, foi procurando outras
+                    formas de olhar para o bem-estar e para
+                    a pessoa como um todo, realizando diversas
+                    formações, entre elas Acupuntura e
+                    Hipnoterapia Ericksoniana.
+                </p>
+
+                <br>
+
+                <p>
+                    Agora, retoma o percurso académico com
+                    a intenção de ingressar na Universidade
+                    e estudar Psicologia.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         PERCURSO
+    ================================= -->
+
+    <section class="journey">
+
+        <div class="section-label">
+            O PERCURSO
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    ORIGENS
+                </div>
+
+                <h3>
+                    Flores · Açores
+                </h3>
+
+                <p>
+                    Onde começou a sua história,
+                    num lugar que continua a fazer
+                    parte da sua identidade.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    FORMAÇÃO
+                </div>
+
+                <h3>
+                    Lisboa
+                </h3>
+
+                <p>
+                    Formação em Análises Clínicas,
+                    iniciando um percurso ligado
+                    à área da saúde.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    NOVOS CAMINHOS
+                </div>
+
+                <h3>
+                    Corpo & Mente
+                </h3>
+
+                <p>
+                    Formação em diferentes áreas,
+                    incluindo Acupuntura e
+                    Hipnoterapia Ericksoniana.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    PRESENTE
+                </div>
+
+                <h3>
+                    Uma nova aventura
+                </h3>
+
+                <p>
+                    O regresso à Universidade e
+                    o início de um novo capítulo
+                    dedicado ao estudo da Psicologia.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         VIDA
+    ================================= -->
+
+    <section class="life">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                PARA ALÉM DA TERAPIA
+            </div>
+
+            <h2>
+                A pessoa por
+                <br>
+                <em>trás do caminho.</em>
+            </h2>
+
+            <p>
+                Fora do espaço terapêutico, existem
+                outras formas de presença e equilíbrio.
+                Yoga, meditação, costura e surf fazem
+                parte da sua vida e da forma como encontra
+                momentos de pausa, criatividade e ligação
+                consigo própria.
+            </p>
+
+
+            <div class="interests">
+
+                <div class="interest">
+                    YOGA
+                </div>
+
+                <div class="interest">
+                    MEDITAÇÃO
+                </div>
+
+                <div class="interest">
+                    SURF
+                </div>
+
+                <div class="interest">
+                    COSTURA
+                </div>
+
+                <div class="interest">
+                    FAMÍLIA
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         FINAL
+    ================================= -->
+
+    <section class="final">
+
+        <div class="final-inner reveal">
+
+            <div class="final-mark">
+                ✦
+            </div>
+
+            <h2>
+
+                Cuidar dos outros
+                também pode começar
+                por <em>escutar.</em>
+
+            </h2>
+
+            <p>
+                DEEP AWARENESS · HIPNOTERAPIA ERICKSONIANA
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        DEEP AWARENESS
+        &nbsp; · &nbsp;
+        HIPNOTERAPIA ERICKSONIANA
+        &nbsp; · &nbsp;
+        PONTA DELGADA · AÇORES
+
+    </footer>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        /* MENU */
+
+        const menuOpen = document.getElementById("menuOpen");
+        const menuClose = document.getElementById("menuClose");
+        const menu = document.getElementById("menu");
+
+        menuOpen.addEventListener("click", function () {
+            menu.classList.add("active");
+        });
+
+        menuClose.addEventListener("click", function () {
+            menu.classList.remove("active");
+        });
+
+
+        /* FECHAR MENU AO CLICAR NUM LINK */
+
+        document.querySelectorAll(".menu-links a").forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                menu.classList.remove("active");
+
+            });
+
+        });
+
+
+        /* ANIMAÇÕES AO FAZER SCROLL */
+
+        const elements = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(
+
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+        elements.forEach(function(element) {
+
+            observer.observe(element);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
