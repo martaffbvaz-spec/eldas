@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hipnoterapia Ericksoniana | Deep Awareness</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* ==================================================
+           BASE
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background: #061326;
+
+            color: #eee6d2;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-weight: 300;
+
+            overflow-x: hidden;
+        }
+
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 70% 15%,
+                    rgba(48, 88, 130, 0.28),
+                    transparent 40%
+                ),
+
+                radial-gradient(
+                    circle at 20% 70%,
+                    rgba(20, 57, 90, 0.22),
+                    transparent 45%
+                );
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        /* ==================================================
+           NAVEGAÇÃO
+        ================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 90px;
+
+            padding: 0 6vw;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            z-index: 100;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(4, 14, 30, 0.9),
+                    transparent
+                );
+
+            backdrop-filter: blur(5px);
+        }
+
+
+        .logo {
+
+            color: #e8c477;
+
+            text-decoration: none;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 24px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .menu-button {
+
+            border: none;
+
+            background: transparent;
+
+            color: #e8c477;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+
+        .menu-icon {
+
+            width: 28px;
+        }
+
+
+        .menu-icon span {
+
+            display: block;
+
+            height: 1px;
+
+            background: #e8c477;
+
+            margin: 6px 0;
+        }
+
+
+        /* ==================================================
+           MENU
+        ================================================== */
+
+        .menu {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #07152a;
+
+            z-index: 200;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.5s ease;
+        }
+
+
+        .menu.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .menu-close {
+
+            position: absolute;
+
+            top: 35px;
+
+            right: 6vw;
+
+            background: transparent;
+
+            border: none;
+
+            color: #e8c477;
+
+            letter-spacing: 3px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+
+        .menu-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            gap: 20px;
+        }
+
+
+        .menu-links a {
+
+            color: #eee6d2;
+
+            text-decoration: none;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(35px, 5vw, 60px);
+
+            transition: 0.3s;
+        }
+
+
+        .menu-links a:hover {
+
+            color: #e8c477;
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 140px 25px 100px;
+
+            overflow: hidden;
+        }
+
+
+        .hero-orbit {
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            border: 1px solid rgba(222, 187, 106, 0.15);
+
+            border-radius: 50%;
+
+            animation: rotate 35s linear infinite;
+        }
+
+
+        .hero-orbit::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+
+            left: -4px;
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #e8c477;
+
+            box-shadow: 0 0 25px #e8c477;
+        }
+
+
+        .hero-orbit-two {
+
+            position: absolute;
+
+            width: 430px;
+
+            height: 430px;
+
+            border: 1px solid rgba(222, 187, 106, 0.1);
+
+            border-radius: 50%;
+
+            animation: rotateReverse 28s linear infinite;
+        }
+
+
+        @keyframes rotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes rotateReverse {
+
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            max-width: 850px;
+        }
+
+
+        .label {
+
+            color: #c5a968;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .hero h1 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(65px, 11vw, 135px);
+
+            font-weight: 300;
+
+            line-height: 0.82;
+
+            color: #e8c477;
+        }
+
+
+        .hero h1 span {
+
+            color: #eee6d2;
+
+            font-style: italic;
+        }
+
+
+        .gold-line {
+
+            width: 75px;
+
+            height: 1px;
+
+            background: #d7ad59;
+
+            margin: 45px auto;
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 25px;
+
+            line-height: 1.5;
+
+            color: #d4cebf;
+        }
+
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 35px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color: #8e9298;
+        }
+
+
+        /* ==================================================
+           INTRO
+        ================================================== */
+
+        .intro {
+
+            padding: 130px 9vw;
+
+            border-top: 1px solid rgba(220, 190, 120, 0.16);
+        }
+
+
+        .intro-grid {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 100px;
+
+            align-items: center;
+        }
+
+
+        .section-label {
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color: #c5a968;
+
+            margin-bottom: 35px;
+        }
+
+
+        .intro h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(48px, 6vw, 78px);
+
+            font-weight: 300;
+
+            line-height: 0.95;
+
+            color: #e8c477;
+        }
+
+
+        .intro h2 em {
+
+            color: #eee6d2;
+        }
+
+
+        .intro-text {
+
+            color: #c4c1b8;
+
+            font-size: 16px;
+
+            line-height: 1.9;
+        }
+
+
+        .intro-text p {
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ==================================================
+           O QUE É
+        ================================================== */
+
+        .what {
+
+            padding: 140px 9vw;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(36, 75, 112, 0.22),
+                    transparent 55%
+                );
+        }
+
+
+        .what-inner {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+
+        .what h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 80px);
+
+            font-weight: 300;
+
+            margin-bottom: 50px;
+        }
+
+
+        .what h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .what-description {
+
+            max-width: 780px;
+
+            margin: auto;
+
+            color: #c4c1b8;
+
+            font-size: 17px;
+
+            line-height: 2;
+        }
+
+
+        /* ==================================================
+           MITOS
+        ================================================== */
+
+        .myths {
+
+            padding: 130px 8vw;
+
+            border-top: 1px solid rgba(220, 190, 120, 0.14);
+        }
+
+
+        .myths-title {
+
+            max-width: 1050px;
+
+            margin: auto auto 70px;
+
+            text-align: center;
+        }
+
+
+        .myths-title h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+        }
+
+
+        .myths-title h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .myth-grid {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1px;
+
+            background: rgba(220, 190, 120, 0.2);
+        }
+
+
+        .myth {
+
+            background: #07162b;
+
+            padding: 55px;
+
+            min-height: 280px;
+        }
+
+
+        .myth-number {
+
+            color: #e8c477;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .myth h3 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 34px;
+
+            font-weight: 400;
+
+            margin-bottom: 18px;
+        }
+
+
+        .myth p {
+
+            color: #aeb0b0;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        /* ==================================================
+           PROCESSO
+        ================================================== */
+
+        .process {
+
+            padding: 140px 8vw;
+
+            text-align: center;
+        }
+
+
+        .process h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            margin-bottom: 80px;
+        }
+
+
+        .process h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .steps {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 50px;
+        }
+
+
+        .step {
+
+            position: relative;
+
+            padding: 20px;
+        }
+
+
+        .step-number {
+
+            width: 50px;
+
+            height: 50px;
+
+            border: 1px solid rgba(232, 196, 119, 0.5);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 30px;
+
+            color: #e8c477;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 20px;
+        }
+
+
+        .step h3 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 30px;
+
+            font-weight: 400;
+
+            margin-bottom: 18px;
+        }
+
+
+        .step p {
+
+            color: #aeb0b0;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        /* ==================================================
+           PARA QUEM
+        ================================================== */
+
+        .areas {
+
+            padding: 130px 8vw;
+
+            background: rgba(4, 15, 31, 0.6);
+
+            border-top: 1px solid rgba(220, 190, 120, 0.12);
+        }
+
+
+        .areas-inner {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+
+        .areas h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            margin-bottom: 60px;
+        }
+
+
+        .areas h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .area-list {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+        }
+
+
+        .area {
+
+            border: 1px solid rgba(232, 196, 119, 0.35);
+
+            padding: 15px 28px;
+
+            border-radius: 40px;
+
+            color: #d5c69f;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s;
+        }
+
+
+        .area:hover {
+
+            background: rgba(232, 196, 119, 0.08);
+
+            border-color: #e8c477;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* ==================================================
+           FRASE
+        ================================================== */
+
+        .quote {
+
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 25px;
+        }
+
+
+        .quote-inner {
+
+            max-width: 850px;
+        }
+
+
+        .quote-mark {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 90px;
+
+            color: #e8c477;
+
+            line-height: 0.5;
+
+            margin-bottom: 35px;
+        }
+
+
+        .quote h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(42px, 6vw, 72px);
+
+            font-weight: 300;
+
+            line-height: 1.1;
+        }
+
+
+        .quote h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .quote p {
+
+            margin-top: 35px;
+
+            color: #8e9298;
+
+            letter-spacing: 4px;
+
+            font-size: 10px;
+        }
+
+
+        /* ==================================================
+           CTA
+        ================================================== */
+
+        .cta {
+
+            padding: 120px 25px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(220, 190, 120, 0.15);
+        }
+
+
+        .cta h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            margin-bottom: 30px;
+        }
+
+
+        .cta h2 em {
+
+            color: #e8c477;
+        }
+
+
+        .cta p {
+
+            max-width: 600px;
+
+            margin: auto auto 40px;
+
+            color: #b9b8b2;
+
+            line-height: 1.8;
+        }
+
+
+        .cta a {
+
+            display: inline-block;
+
+            padding: 16px 35px;
+
+            border: 1px solid rgba(232, 196, 119, 0.6);
+
+            color: #e8c477;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            transition: 0.3s;
+        }
+
+
+        .cta a:hover {
+
+            background: #e8c477;
+
+            color: #061326;
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+
+            border-top: 1px solid rgba(220, 190, 120, 0.15);
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #777d85;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* ==================================================
+           REVEAL
+        ================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition:
+                opacity 1s ease,
+                transform 1s ease;
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 750px) {
+
+            nav {
+
+                height: 75px;
+
+                padding: 0 25px;
+            }
+
+
+            .logo {
+
+                font-size: 18px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .hero-orbit {
+
+                width: 420px;
+
+                height: 420px;
+            }
+
+
+            .hero-orbit-two {
+
+                width: 290px;
+
+                height: 290px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 70px;
+            }
+
+
+            .hero p {
+
+                font-size: 21px;
+            }
+
+
+            .intro {
+
+                padding: 90px 25px;
+            }
+
+
+            .intro-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            .what {
+
+                padding: 90px 25px;
+            }
+
+
+            .myths {
+
+                padding: 90px 25px;
+            }
+
+
+            .myth-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .myth {
+
+                padding: 40px 30px;
+            }
+
+
+            .process {
+
+                padding: 90px 25px;
+            }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+
+                gap: 55px;
+            }
+
+
+            .areas {
+
+                padding: 90px 25px;
+            }
+
+
+            .quote {
+
+                min-height: 60vh;
+            }
+
+
+            .cta {
+
+                padding: 90px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVEGAÇÃO
+    ================================================== -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Deep Awareness
+        </a>
+
+
+        <button class="menu-button" id="menuOpen">
+
+            MENU
+
+            <div class="menu-icon">
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- ==================================================
+         MENU
+    ================================================== -->
+
+    <div class="menu" id="menu">
+
+        <button class="menu-close" id="menuClose">
+            FECHAR
+        </button>
+
+
+        <div class="menu-links">
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="terapeuta.html">
+                Sobre a Terapeuta
+            </a>
+
+            <a href="hipnoterapia.html">
+                Hipnoterapia
+            </a>
+
+            <a href="consultas.html">
+                Consultas
+            </a>
+
+            <a href="ajuda.html">
+                Como Posso Ajudar?
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+            <a href="contacto.html">
+                Contacto
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-orbit"></div>
+
+        <div class="hero-orbit-two"></div>
+
+
+        <div class="hero-content reveal">
+
+            <div class="label">
+                DEEP AWARENESS
+            </div>
+
+
+            <h1>
+
+                Hipno
+
+                <br>
+
+                <span>terapia.</span>
+
+            </h1>
+
+
+            <div class="gold-line"></div>
+
+
+            <p>
+
+                Um espaço de presença,
+                consciência e reencontro
+                com os recursos que já
+                existem dentro de ti.
+
+            </p>
+
+        </div>
+
+
+        <div class="scroll">
+            SCROLL
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         INTRO
+    ================================================== -->
+
+    <section class="intro">
+
+        <div class="intro-grid">
+
+
+            <div class="reveal">
+
+                <div class="section-label">
+                    HIPNOTERAPIA ERICKSONIANA
+                </div>
+
+
+                <h2>
+
+                    Não é sobre
+
+                    <br>
+
+                    <em>perder o controlo.</em>
+
+                </h2>
+
+            </div>
+
+
+            <div class="intro-text reveal">
+
+                <p>
+
+                    A hipnoterapia é frequentemente
+                    associada a ideias que vemos em
+                    filmes ou espetáculos.
+
+                </p>
+
+
+                <p>
+
+                    Na abordagem Ericksoniana, a experiência
+                    é diferente. A pessoa mantém a sua
+                    individualidade, consciência e capacidade
+                    de escolha durante todo o processo.
+
+                </p>
+
+
+                <p>
+
+                    Através de um estado de relaxamento
+                    e atenção focada, pode criar-se espaço
+                    para observar pensamentos, emoções
+                    e padrões internos de uma forma diferente.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         O QUE É
+    ================================================== -->
+
+    <section class="what">
+
+        <div class="what-inner reveal">
+
+
+            <div class="section-label">
+                UMA ABORDAGEM SUAVE
+            </div>
+
+
+            <h2>
+
+                Escutar aquilo que
+                <br>
+                normalmente fica
+                <em>em silêncio.</em>
+
+            </h2>
+
+
+            <div class="what-description">
+
+                <p>
+
+                    A Hipnoterapia Ericksoniana baseia-se
+                    numa abordagem individualizada,
+                    respeitadora e centrada na pessoa.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Em vez de impor respostas, procura
+                    criar condições para que cada pessoa
+                    possa encontrar os seus próprios
+                    recursos e novas formas de olhar
+                    para aquilo que está a viver.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         MITOS
+    ================================================== -->
+
+    <section class="myths">
+
+
+        <div class="myths-title reveal">
+
+            <div class="section-label">
+                DESMISTIFICAR
+            </div>
+
+
+            <h2>
+
+                Talvez não seja aquilo
+                <br>
+                que <em>imaginas.</em>
+
+            </h2>
+
+        </div>
+
+
+        <div class="myth-grid">
+
+
+            <div class="myth reveal">
+
+                <div class="myth-number">
+                    01
+                </div>
+
+
+                <h3>
+                    “Vou perder o controlo?”
+                </h3>
+
+
+                <p>
+
+                    A hipnose terapêutica não significa
+                    entregar o controlo a outra pessoa.
+                    O processo acontece de forma
+                    colaborativa e respeitadora.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="myth reveal">
+
+                <div class="myth-number">
+                    02
+                </div>
+
+
+                <h3>
+                    “Vou ficar inconsciente?”
+                </h3>
+
+
+                <p>
+
+                    O estado hipnótico é diferente
+                    de estar a dormir. A pessoa pode
+                    permanecer consciente e envolvida
+                    na experiência.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="myth reveal">
+
+                <div class="myth-number">
+                    03
+                </div>
+
+
+                <h3>
+                    “Tenho de acreditar na hipnose?”
+                </h3>
+
+
+                <p>
+
+                    Não é necessário adoptar uma
+                    determinada crença. A experiência
+                    é individual e pode ser explorada
+                    ao ritmo de cada pessoa.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="myth reveal">
+
+                <div class="myth-number">
+                    04
+                </div>
+
+
+                <h3>
+                    “É igual para toda a gente?”
+                </h3>
+
+
+                <p>
+
+                    Não. A abordagem Ericksoniana
+                    valoriza precisamente a
+                    individualidade de cada pessoa
+                    e a sua experiência única.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         PROCESSO
+    ================================================== -->
+
+    <section class="process">
+
+
+        <div class="section-label reveal">
+            O PROCESSO
+        </div>
+
+
+        <h2 class="reveal">
+
+            Um caminho em
+
+            <br>
+
+            <em>três movimentos.</em>
+
+        </h2>
+
+
+        <div class="steps">
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    01
+                </div>
+
+
+                <h3>
+                    Parar
+                </h3>
+
+
+                <p>
+
+                    Criar um espaço de pausa,
+                    afastando por momentos
+                    o ruído e a agitação.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    02
+                </div>
+
+
+                <h3>
+                    Escutar
+                </h3>
+
+
+                <p>
+
+                    Observar pensamentos,
+                    emoções e sensações
+                    com maior presença.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    03
+                </div>
+
+
+                <h3>
+                    Reencontrar
+                </h3>
+
+
+                <p>
+
+                    Explorar recursos internos
+                    e novas possibilidades
+                    de resposta.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         ÁREAS
+    ================================================== -->
+
+    <section class="areas">
+
+
+        <div class="areas-inner reveal">
+
+
+            <div class="section-label">
+                POSSÍVEIS ÁREAS DE TRABALHO
+            </div>
+
+
+            <h2>
+
+                O que pode ser
+
+                <br>
+
+                <em>explorado.</em>
+
+            </h2>
+
+
+            <div class="area-list">
+
+
+                <div class="area">
+                    Ansiedade
+                </div>
+
+
+                <div class="area">
+                    Stress
+                </div>
+
+
+                <div class="area">
+                    Sobrecarga emocional
+                </div>
+
+
+                <div class="area">
+                    Autoestima
+                </div>
+
+
+                <div class="area">
+                    Medos
+                </div>
+
+
+                <div class="area">
+                    Confiança
+                </div>
+
+
+                <div class="area">
+                    Clareza
+                </div>
+
+
+                <div class="area">
+                    Bem-estar emocional
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FRASE
+    ================================================== -->
+
+    <section class="quote">
+
+
+        <div class="quote-inner reveal">
+
+
+            <div class="quote-mark">
+                “
+            </div>
+
+
+            <h2>
+
+                A tua mente inconsciente
+                pode guardar recursos que
+                ainda <em>não aprendeste a escutar.</em>
+
+            </h2>
+
+
+            <p>
+                DEEP AWARENESS
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CTA
+    ================================================== -->
+
+    <section class="cta">
+
+
+        <div class="reveal">
+
+
+            <div class="section-label">
+                DEEP AWARENESS
+            </div>
+
+
+            <h2>
+
+                Talvez o primeiro passo
+                <br>
+                seja simplesmente <em>parar.</em>
+
+            </h2>
+
+
+            <p>
+
+                Se sentes que precisas de criar
+                espaço para ti, podes conhecer
+                melhor a forma como funcionam
+                as consultas.
+
+            </p>
+
+
+            <a href="consultas.html">
+                CONHECER AS CONSULTAS
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        DEEP AWARENESS
+        &nbsp; · &nbsp;
+        HIPNOTERAPIA ERICKSONIANA
+
+    </footer>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+
+        /* ============================
+           MENU
+        ============================ */
+
+        const menuOpen =
+            document.getElementById("menuOpen");
+
+        const menuClose =
+            document.getElementById("menuClose");
+
+        const menu =
+            document.getElementById("menu");
+
+
+        menuOpen.addEventListener("click", function () {
+
+            menu.classList.add("active");
+
+        });
+
+
+        menuClose.addEventListener("click", function () {
+
+            menu.classList.remove("active");
+
+        });
+
+
+        document
+            .querySelectorAll(".menu-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    menu.classList.remove("active");
+
+                });
+
+            });
+
+
+
+        /* ============================
+           REVEAL AO FAZER SCROLL
+        ============================ */
+
+        const elements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        elements.forEach(function (element) {
+
+            observer.observe(element);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
