@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Como Posso Ajudar? | Deep Awareness</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           BASE
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #07152d;
+            color: #f1e6cf;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(42, 76, 120, 0.30),
+                    transparent 45%
+                );
+
+            pointer-events: none;
+            z-index: -2;
+        }
+
+
+        body::after {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                radial-gradient(
+                    rgba(255,255,255,0.08) 1px,
+                    transparent 1px
+                );
+
+            background-size: 90px 90px;
+
+            opacity: 0.12;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+
+        /* =====================================================
+           NAVEGAÇÃO
+        ===================================================== */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 28px 45px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 100;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(5,15,32,0.75),
+                    transparent
+                );
+        }
+
+
+        .logo {
+            color: #e8c875;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+
+        .menu {
+            color: #e8c875;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+        }
+
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 120px 25px 80px;
+
+            position: relative;
+        }
+
+
+        .eyebrow {
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            color: #cdb77a;
+
+            margin-bottom: 28px;
+
+            opacity: 0.8;
+        }
+
+
+        h1 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(60px, 9vw, 120px);
+
+            font-weight: 300;
+
+            line-height: 0.85;
+
+            letter-spacing: 2px;
+
+            color: #e9cc83;
+        }
+
+
+        h1 em {
+
+            color: #f0e8d8;
+
+            font-style: italic;
+        }
+
+
+        .hero-line {
+
+            width: 90px;
+
+            height: 1px;
+
+            background: #cba95d;
+
+            margin: 40px auto;
+        }
+
+
+        .hero-text {
+
+            max-width: 570px;
+
+            line-height: 1.9;
+
+            color: #d4d1ca;
+
+            font-size: 14px;
+        }
+
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 35px;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color: #a89b80;
+        }
+
+
+        .scroll::after {
+
+            content: "";
+
+            display: block;
+
+            width: 1px;
+
+            height: 45px;
+
+            background: #a88b4d;
+
+            margin: 12px auto 0;
+        }
+
+
+
+        /* =====================================================
+           ESTRELAS
+        ===================================================== */
+
+        .star {
+
+            position: absolute;
+
+            color: #e4bd67;
+
+            font-size: 14px;
+
+            opacity: 0.8;
+
+            animation: floating 5s ease-in-out infinite;
+        }
+
+
+        .star.one {
+            top: 24%;
+            left: 14%;
+        }
+
+
+        .star.two {
+            top: 38%;
+            right: 17%;
+            animation-delay: 1s;
+        }
+
+
+        .star.three {
+            bottom: 25%;
+            left: 22%;
+            animation-delay: 2s;
+        }
+
+
+        .star.four {
+            bottom: 18%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+
+        /* =====================================================
+           TEMAS
+        ===================================================== */
+
+        .themes {
+
+            padding: 100px 7vw 150px;
+
+            position: relative;
+        }
+
+
+        .section-label {
+
+            text-align: center;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color: #bca871;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(38px, 5vw, 65px);
+
+            font-weight: 300;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-title em {
+
+            color: #d4b66f;
+
+            font-style: italic;
+        }
+
+
+        .intro {
+
+            max-width: 570px;
+
+            text-align: center;
+
+            margin: 0 auto 100px;
+
+            color: #bfc0bd;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+
+
+        /* =====================================================
+           DIAGRAMA
+        ===================================================== */
+
+        .diagram {
+
+            width: min(900px, 92vw);
+
+            height: 570px;
+
+            margin: auto;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        /* círculo exterior */
+
+        .orbit {
+
+            position: absolute;
+
+            width: 520px;
+
+            height: 520px;
+
+            border: 1px solid rgba(221, 196, 139, 0.25);
+
+            border-radius: 50%;
+
+            animation: slowRotate 35s linear infinite;
+        }
+
+
+        @keyframes slowRotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* pequenos pontos na órbita */
+
+        .orbit::before,
+        .orbit::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 5px;
+
+            height: 5px;
+
+            background: #d9b96c;
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 12px #d9b96c;
+        }
+
+
+        .orbit::before {
+
+            top: -3px;
+
+            left: 50%;
+        }
+
+
+        .orbit::after {
+
+            bottom: -3px;
+
+            left: 50%;
+        }
+
+
+
+        /* linhas horizontais */
+
+        .line-horizontal {
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    rgba(216,190,126,0.45),
+                    transparent
+                );
+        }
+
+
+        .line-horizontal.top {
+
+            transform: translateY(-155px);
+        }
+
+
+        .line-horizontal.bottom {
+
+            transform: translateY(155px);
+        }
+
+
+
+        /* =====================================================
+           CÍRCULOS
+        ===================================================== */
+
+        .circle {
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(234, 216, 174, 0.65);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 35px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.6s ease,
+                background 0.6s ease,
+                border-color 0.6s ease,
+                box-shadow 0.6s ease;
+        }
+
+
+        .circle:hover {
+
+            border-color: #e4c77c;
+
+            background: rgba(202, 169, 93, 0.07);
+
+            box-shadow:
+                0 0 40px rgba(204, 170, 94, 0.12);
+
+            transform: scale(1.04);
+        }
+
+
+        .circle.active {
+
+            background: rgba(202, 169, 93, 0.09);
+
+            border-color: #e5c878;
+
+            box-shadow:
+                0 0 50px rgba(205, 175, 100, 0.15);
+        }
+
+
+        .circle-content {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .circle-number {
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            color: #ad9563;
+
+            margin-bottom: 15px;
+        }
+
+
+        .circle h3 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 31px;
+
+            font-weight: 400;
+
+            color: #eee2c6;
+
+            margin-bottom: 13px;
+        }
+
+
+        .circle p {
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            color: #aaa9a3;
+        }
+
+
+        .circle-left {
+
+            left: 5%;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+        }
+
+
+        .circle-center {
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 290px;
+
+            height: 290px;
+
+            z-index: 3;
+
+            border-color: rgba(232, 201, 124, 0.8);
+        }
+
+
+        .circle-right {
+
+            right: 5%;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+        }
+
+
+        .circle-left:hover,
+        .circle-right:hover {
+
+            transform: translateY(-50%) scale(1.04);
+        }
+
+
+        .circle-center:hover {
+
+            transform: translate(-50%, -50%) scale(1.04);
+        }
+
+
+
+        /* =====================================================
+           ESTRELAS DO DIAGRAMA
+        ===================================================== */
+
+        .diagram-star {
+
+            position: absolute;
+
+            color: #d8b76a;
+
+            font-size: 12px;
+
+            z-index: 5;
+        }
+
+
+        .diagram-star.s1 {
+            top: 7%;
+            left: 32%;
+        }
+
+
+        .diagram-star.s2 {
+            top: 19%;
+            right: 28%;
+        }
+
+
+        .diagram-star.s3 {
+            bottom: 8%;
+            left: 30%;
+        }
+
+
+        .diagram-star.s4 {
+            bottom: 14%;
+            right: 30%;
+        }
+
+
+
+        /* =====================================================
+           TEXTO EXPANDIDO
+        ===================================================== */
+
+        .detail {
+
+            max-width: 800px;
+
+            margin: 80px auto 0;
+
+            padding: 45px 50px;
+
+            border-top: 1px solid rgba(214, 185, 117, 0.3);
+
+            border-bottom: 1px solid rgba(214, 185, 117, 0.3);
+
+            text-align: center;
+
+            opacity: 0;
+
+            transform: translateY(20px);
+
+            transition: 0.6s ease;
+
+            pointer-events: none;
+        }
+
+
+        .detail.show {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+            pointer-events: auto;
+        }
+
+
+        .detail-label {
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color: #bda566;
+
+            margin-bottom: 18px;
+        }
+
+
+        .detail h3 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 38px;
+
+            font-weight: 300;
+
+            margin-bottom: 15px;
+
+            color: #e7d5ac;
+        }
+
+
+        .detail p {
+
+            color: #bfc0bd;
+
+            line-height: 1.9;
+
+            font-size: 13px;
+        }
+
+
+
+        /* =====================================================
+           FRASE FINAL
+        ===================================================== */
+
+        .closing {
+
+            padding: 140px 25px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(214,185,117,0.12);
+        }
+
+
+        .closing-symbol {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 65px;
+
+            color: #d8b76a;
+
+            line-height: 1;
+        }
+
+
+        .closing h2 {
+
+            max-width: 700px;
+
+            margin: 25px auto;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(34px, 5vw, 55px);
+
+            font-weight: 300;
+
+            line-height: 1.1;
+        }
+
+
+        .closing h2 em {
+
+            color: #d7b86d;
+
+            font-style: italic;
+        }
+
+
+        .closing p {
+
+            max-width: 520px;
+
+            margin: auto;
+
+            color: #9f9f9a;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+
+
+        /* =====================================================
+           CONTACTO
+        ===================================================== */
+
+        .contact {
+
+            padding: 100px 25px 130px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(3,11,25,0.6)
+                );
+        }
+
+
+        .contact a {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 15px 35px;
+
+            border: 1px solid #c9aa65;
+
+            color: #e6ce92;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            transition: 0.4s ease;
+        }
+
+
+        .contact a:hover {
+
+            background: #c9aa65;
+
+            color: #07152d;
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(214,185,117,0.15);
+
+            color: #777b7c;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 22px;
+            }
+
+
+            .diagram {
+
+                height: auto;
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 25px;
+
+                padding: 50px 0;
+            }
+
+
+            .orbit,
+            .line-horizontal {
+
+                display: none;
+            }
+
+
+            .circle,
+            .circle-center,
+            .circle-left,
+            .circle-right {
+
+                position: relative;
+
+                left: auto;
+
+                right: auto;
+
+                top: auto;
+
+                transform: none;
+
+                width: min(300px, 80vw);
+
+                height: min(300px, 80vw);
+
+                flex-shrink: 0;
+            }
+
+
+            .circle:hover,
+            .circle-left:hover,
+            .circle-right:hover,
+            .circle-center:hover {
+
+                transform: scale(1.03);
+            }
+
+
+            .circle-center {
+                order: -1;
+            }
+
+
+            .detail {
+
+                padding: 35px 25px;
+
+                margin-top: 35px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .hero {
+
+                padding-top: 110px;
+            }
+
+
+            h1 {
+
+                font-size: 60px;
+            }
+
+
+            .hero-text {
+
+                font-size: 13px;
+
+                max-width: 320px;
+            }
+
+
+            .themes {
+
+                padding-left: 20px;
+
+                padding-right: 20px;
+            }
+
+
+            .section-title {
+
+                font-size: 42px;
+            }
+
+
+            .circle {
+
+                width: 260px;
+
+                height: 260px;
+            }
+
+
+            .circle-center {
+
+                width: 275px;
+
+                height: 275px;
+            }
+
+
+            .detail h3 {
+
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVEGAÇÃO
+    ====================================================== -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            DEEP AWARENESS
+        </a>
+
+        <a href="index.html" class="menu">
+            VOLTAR
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <div class="star one">✦</div>
+        <div class="star two">✧</div>
+        <div class="star three">✦</div>
+        <div class="star four">✧</div>
+
+
+        <div class="eyebrow">
+            DEEP AWARENESS · UM ESPAÇO PARA TI
+        </div>
+
+
+        <h1>
+            Escutar.
+            <br>
+            <em>Reencontrar.</em>
+        </h1>
+
+
+        <div class="hero-line"></div>
+
+
+        <p class="hero-text">
+
+            Nem sempre precisamos de procurar mais.
+            Às vezes precisamos apenas de criar espaço
+            para escutar aquilo que já existe dentro de nós.
+
+        </p>
+
+
+        <div class="scroll">
+            EXPLORAR
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TEMAS
+    ====================================================== -->
+
+    <section class="themes">
+
+        <div class="section-label">
+            O TEU CAMINHO
+        </div>
+
+
+        <h2 class="section-title">
+
+            O que podemos
+            <br>
+            <em>explorar juntos.</em>
+
+        </h2>
+
+
+        <p class="intro">
+
+            Cada pessoa chega à consulta com uma história diferente.
+            Estes são apenas alguns dos caminhos que podem ser
+            trabalhados através da Hipnoterapia Ericksoniana.
+
+        </p>
+
+
+
+        <!-- DIAGRAMA -->
+
+        <div class="diagram">
+
+
+            <div class="orbit"></div>
+
+            <div class="line-horizontal top"></div>
+
+            <div class="line-horizontal bottom"></div>
+
+
+            <div class="diagram-star s1">✦</div>
+            <div class="diagram-star s2">✧</div>
+            <div class="diagram-star s3">✧</div>
+            <div class="diagram-star s4">✦</div>
+
+
+
+            <!-- CÍRCULO 1 -->
+
+            <div
+                class="circle circle-left"
+                data-title="Abrandar"
+                data-text="Criar espaço para respirar, compreender a ansiedade, aliviar a sobrecarga e recuperar uma sensação de segurança e equilíbrio interior."
+            >
+
+                <div class="circle-content">
+
+                    <div class="circle-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Abrandar
+                    </h3>
+
+                    <p>
+                        Ansiedade · Stress · Agitação
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CÍRCULO CENTRAL -->
+
+            <div
+                class="circle circle-center"
+                data-title="Reencontrar"
+                data-text="Voltar a escutar os teus próprios recursos, desenvolver clareza e criar uma relação mais consciente contigo e com aquilo que realmente precisas."
+            >
+
+                <div class="circle-content">
+
+                    <div class="circle-number">
+                        02 · CENTRO
+                    </div>
+
+                    <h3>
+                        Reencontrar
+                    </h3>
+
+                    <p>
+                        Clareza · Presença · Consciência
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CÍRCULO 3 -->
+
+            <div
+                class="circle circle-right"
+                data-title="Transformar"
+                data-text="Explorar padrões, medos e bloqueios que já não precisam de definir o teu caminho e abrir espaço para novas possibilidades."
+            >
+
+                <div class="circle-content">
+
+                    <div class="circle-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Transformar
+                    </h3>
+
+                    <p>
+                        Medos · Bloqueios · Confiança
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INFORMAÇÃO DINÂMICA -->
+
+        <div class="detail" id="detail">
+
+            <div class="detail-label">
+                EXPLORAR
+            </div>
+
+            <h3 id="detailTitle">
+                Reencontrar
+            </h3>
+
+            <p id="detailText">
+
+                Clica num dos círculos para descobrires
+                um pouco mais sobre este caminho.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FRASE
+    ====================================================== -->
+
+    <section class="closing">
+
+        <div class="closing-symbol">
+            ✦
+        </div>
+
+
+        <h2>
+
+            A tua mente já guarda
+            <br>
+            <em>recursos que talvez ainda não conheças.</em>
+
+        </h2>
+
+
+        <p>
+
+            A Hipnoterapia Ericksoniana procura criar
+            um espaço seguro onde esses recursos possam
+            ser reconhecidos, explorados e integrados.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+
+    <section class="contact">
+
+        <div class="section-label">
+            DEEP AWARENESS
+        </div>
+
+
+        <h2 class="section-title">
+
+            Talvez o primeiro passo
+            <br>
+            seja simplesmente <em>parar.</em>
+
+        </h2>
+
+
+        <p class="hero-text">
+
+            Se sentes que este pode ser o momento
+            de olhar para dentro, podes entrar
+            em contacto para saber mais.
+
+        </p>
+
+
+        <a href="contacto.html">
+            SABER MAIS SOBRE AS CONSULTAS
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        DEEP AWARENESS
+        ·
+        HIPNOTERAPIA ERICKSONIANA
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const circles = document.querySelectorAll(".circle");
+
+        const detail = document.getElementById("detail");
+
+        const detailTitle = document.getElementById("detailTitle");
+
+        const detailText = document.getElementById("detailText");
+
+
+        circles.forEach(circle => {
+
+            circle.addEventListener("click", () => {
+
+                circles.forEach(item => {
+                    item.classList.remove("active");
+                });
+
+
+                circle.classList.add("active");
+
+
+                detailTitle.textContent =
+                    circle.dataset.title;
+
+
+                detailText.textContent =
+                    circle.dataset.text;
+
+
+                detail.classList.add("show");
+
+
+                detail.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
