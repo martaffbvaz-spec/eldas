@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Contacto · Deep Awareness</title>
+
+
+    <!-- =====================================================
+         FONTES
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            background: #030B1A;
+
+            color: #F1EBDD;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-weight: 300;
+
+            overflow-x: hidden;
+
+        }
+
+
+        :root {
+
+            --night: #030B1A;
+
+            --blue: #071A31;
+
+            --blue-light: #102B47;
+
+            --gold: #D9B66B;
+
+            --gold-light: #E8D29A;
+
+            --cream: #F1EBDD;
+
+            --muted: #A7A9A8;
+
+        }
+
+
+
+        /* =====================================================
+           NAVEGAÇÃO
+        ====================================================== */
+
+        .nav {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 28px 45px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            transition:
+                background 0.5s ease,
+                padding 0.5s ease,
+                backdrop-filter 0.5s ease;
+
+        }
+
+
+        .nav.scrolled {
+
+            padding: 18px 45px;
+
+            background:
+                rgba(3, 11, 26, 0.78);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom:
+                1px solid
+                rgba(217, 182, 107, 0.10);
+
+        }
+
+
+        .logo {
+
+            color: var(--cream);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 0.3em;
+
+        }
+
+
+        .menu-button {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--cream);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.3em;
+
+        }
+
+
+        .menu-icon {
+
+            width: 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+
+        .menu-icon span {
+
+            width: 100%;
+
+            height: 1px;
+
+            background: var(--gold);
+
+        }
+
+
+
+        /* =====================================================
+           MENU
+        ====================================================== */
+
+        .menu-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #102A45,
+                    #030B1A 72%
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.5s ease,
+                visibility 0.5s ease;
+
+        }
+
+
+        .menu-overlay.open {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+        .menu-close {
+
+            position: absolute;
+
+            top: 28px;
+
+            right: 45px;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--cream);
+
+            cursor: pointer;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.3em;
+
+        }
+
+
+        .menu-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            gap: 18px;
+
+        }
+
+
+        .menu-links a {
+
+            color: var(--cream);
+
+            text-decoration: none;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(28px, 4vw, 48px);
+
+            font-weight: 300;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .menu-links a:hover {
+
+            color: var(--gold);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .menu-links .menu-sub {
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.35em;
+
+            color: var(--gold);
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        /* =====================================================
+           HERO CONTACTO
+        ====================================================== */
+
+        .contact-hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                130px 25px 100px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 48%,
+                    #102B47 0%,
+                    #071A31 36%,
+                    #030B1A 80%
+                );
+
+        }
+
+
+        /* =====================================================
+           CÍRCULO
+        ====================================================== */
+
+        .orb {
+
+            position: absolute;
+
+            width: min(650px, 90vw);
+
+            height: min(650px, 90vw);
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(217,182,107,0.18);
+
+            animation:
+                float 9s ease-in-out infinite;
+
+        }
+
+
+        .orb::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 35px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(217,182,107,0.09);
+
+        }
+
+
+        .orb::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 90px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(217,182,107,0.06);
+
+        }
+
+
+        @keyframes float {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(0.98)
+                    rotate(0deg);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.02)
+                    rotate(2deg);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           LUZ
+        ====================================================== */
+
+        .light {
+
+            position: absolute;
+
+            width: 400px;
+
+            height: 400px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(217,182,107,0.07);
+
+            filter: blur(110px);
+
+            animation:
+                breathe 7s ease-in-out infinite;
+
+        }
+
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+
+                transform: scale(0.9);
+
+                opacity: 0.45;
+
+            }
+
+            50% {
+
+                transform: scale(1.15);
+
+                opacity: 0.85;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           ESTRELAS
+        ====================================================== */
+
+        .star {
+
+            position: absolute;
+
+            color: var(--gold);
+
+            opacity: 0.55;
+
+            font-size: 12px;
+
+            animation:
+                twinkle 5s ease-in-out infinite;
+
+        }
+
+
+        .star.one {
+
+            top: 25%;
+
+            left: 20%;
+
+        }
+
+
+        .star.two {
+
+            top: 31%;
+
+            right: 19%;
+
+            animation-delay: 1s;
+
+        }
+
+
+        .star.three {
+
+            bottom: 26%;
+
+            left: 27%;
+
+            animation-delay: 2s;
+
+        }
+
+
+        .star.four {
+
+            bottom: 21%;
+
+            right: 25%;
+
+            animation-delay: 3s;
+
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+
+                opacity: 0.15;
+
+                transform: scale(0.7);
+
+            }
+
+            50% {
+
+                opacity: 0.75;
+
+                transform: scale(1.3);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           HERO TEXTO
+        ====================================================== */
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 5;
+
+            max-width: 750px;
+
+        }
+
+
+        .eyebrow {
+
+            font-size: 9px;
+
+            letter-spacing: 0.45em;
+
+            color: var(--gold);
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .hero-content h1 {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(65px, 9vw, 110px);
+
+            font-weight: 300;
+
+            line-height: 0.88;
+
+        }
+
+
+        .hero-content h1 em {
+
+            color: var(--gold);
+
+            font-style: italic;
+
+        }
+
+
+        .hero-line {
+
+            width: 70px;
+
+            height: 1px;
+
+            background: var(--gold);
+
+            margin: 35px auto;
+
+        }
+
+
+        .hero-content p {
+
+            max-width: 540px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 2;
+
+        }
+
+
+
+        /* =====================================================
+           CONTACTOS
+        ====================================================== */
+
+        .contact-section {
+
+            position: relative;
+
+            padding:
+                120px 25px
+                150px;
+
+            background: #030B1A;
+
+        }
+
+
+        .contact-container {
+
+            width: min(950px, 100%);
+
+            margin: 0 auto;
+
+        }
+
+
+        .section-label {
+
+            text-align: center;
+
+            font-size: 9px;
+
+            letter-spacing: 0.42em;
+
+            color: var(--gold);
+
+            margin-bottom: 65px;
+
+        }
+
+
+        .contact-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border-top:
+                1px solid
+                rgba(217,182,107,0.25);
+
+            border-bottom:
+                1px solid
+                rgba(217,182,107,0.25);
+
+        }
+
+
+        .contact-card {
+
+            min-height: 230px;
+
+            padding: 45px 30px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+        }
+
+
+        .contact-card:not(:last-child)::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+
+            top: 35px;
+
+            bottom: 35px;
+
+            width: 1px;
+
+            background:
+                rgba(217,182,107,0.18);
+
+        }
+
+
+        .contact-number {
+
+            font-size: 8px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--gold);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .contact-card h3 {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 29px;
+
+            font-weight: 300;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .contact-card p {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .contact-card a {
+
+            color: var(--cream);
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+            transition:
+                color 0.3s ease;
+
+        }
+
+
+        .contact-card a:hover {
+
+            color: var(--gold);
+
+        }
+
+
+
+        /* =====================================================
+           FRASE
+        ====================================================== */
+
+        .quote {
+
+            padding:
+                110px 25px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #102B47 0%,
+                    #071A31 38%,
+                    #030B1A 82%
+                );
+
+        }
+
+
+        .quote-symbol {
+
+            color: var(--gold);
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 60px;
+
+            line-height: 0.5;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .quote h2 {
+
+            max-width: 760px;
+
+            margin: auto;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(38px, 5vw, 62px);
+
+            font-weight: 300;
+
+            line-height: 0.98;
+
+        }
+
+
+        .quote h2 em {
+
+            color: var(--gold);
+
+            font-style: italic;
+
+        }
+
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta {
+
+            padding:
+                120px 25px;
+
+            text-align: center;
+
+            background: #030B1A;
+
+        }
+
+
+        .cta h2 {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 75px);
+
+            font-weight: 300;
+
+            line-height: 0.95;
+
+        }
+
+
+        .cta h2 em {
+
+            color: var(--gold);
+
+            font-style: italic;
+
+        }
+
+
+        .cta p {
+
+            max-width: 500px;
+
+            margin:
+                30px auto 0;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.9;
+
+        }
+
+
+
+        /* =====================================================
+           BOTÃO
+        ====================================================== */
+
+        .back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 300px;
+
+            height: 52px;
+
+            margin-top: 38px;
+
+            padding: 0 30px;
+
+            border:
+                1px solid var(--gold);
+
+            color: var(--gold-light);
+
+            text-decoration: none;
+
+            font-size: 9px;
+
+            letter-spacing: 0.3em;
+
+            transition:
+                background 0.4s ease,
+                color 0.4s ease;
+
+        }
+
+
+        .back-button:hover {
+
+            background: var(--gold);
+
+            color: var(--night);
+
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(217,182,107,0.08);
+
+            color: #777C80;
+
+            font-size: 8px;
+
+            letter-spacing: 0.25em;
+
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVO
+        ====================================================== */
+
+        @media (max-width: 750px) {
+
+
+            .nav {
+
+                padding: 22px;
+
+            }
+
+
+            .nav.scrolled {
+
+                padding: 16px 22px;
+
+            }
+
+
+            .menu-close {
+
+                top: 22px;
+
+                right: 22px;
+
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .contact-card {
+
+                min-height: 190px;
+
+            }
+
+
+            .contact-card:not(:last-child)::after {
+
+                top: auto;
+
+                bottom: 0;
+
+                left: 25%;
+
+                right: 25%;
+
+                width: auto;
+
+                height: 1px;
+
+            }
+
+
+            .contact-section {
+
+                padding:
+                    90px 22px
+                    110px;
+
+            }
+
+
+            .hero-content h1 {
+
+                font-size: 60px;
+
+            }
+
+
+            .orb {
+
+                width: 500px;
+
+                height: 500px;
+
+            }
+
+
+            .quote {
+
+                padding:
+                    90px 22px;
+
+            }
+
+
+            .cta {
+
+                padding:
+                    90px 22px;
+
+            }
+
+
+            .back-button {
+
+                width: 100%;
+
+                max-width: 350px;
+
+                min-width: 0;
+
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+
+            .hero-content h1 {
+
+                font-size: 52px;
+
+            }
+
+
+            .orb {
+
+                width: 420px;
+
+                height: 420px;
+
+            }
+
+
+            .contact-card h3 {
+
+                font-size: 26px;
+
+            }
+
+
+            .quote h2 {
+
+                font-size: 36px;
+
+            }
+
+
+            .cta h2 {
+
+                font-size: 48px;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVEGAÇÃO
+    ====================================================== -->
+
+    <nav class="nav">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            DEEP AWARENESS
+        </a>
+
+
+        <button
+            class="menu-button"
+            id="menuOpen"
+            type="button"
+        >
+
+            MENU
+
+            <div class="menu-icon">
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MENU
+    ====================================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    >
+
+        <button
+            class="menu-close"
+            id="menuClose"
+            type="button"
+        >
+            FECHAR
+        </button>
+
+
+        <div class="menu-links">
+
+            <a
+                href="index.html"
+                class="menu-sub"
+            >
+                DEEP AWARENESS
+            </a>
+
+
+            <a href="index.html">
+                Início
+            </a>
+
+
+            <a href="terapeuta.html">
+                Sobre a Terapeuta
+            </a>
+
+
+            <a href="hipnoterapia.html">
+                Hipnoterapia
+            </a>
+
+
+            <a href="consultas.html">
+                Consultas
+            </a>
+
+
+            <a href="ajuda.html">
+                Como Posso Ajudar?
+            </a>
+
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+
+            <a href="contacto.html">
+                Contacto
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="contact-hero">
+
+
+        <div class="orb"></div>
+
+
+        <div class="light"></div>
+
+
+        <div class="star one">
+            ✦
+        </div>
+
+        <div class="star two">
+            ✦
+        </div>
+
+        <div class="star three">
+            ✦
+        </div>
+
+        <div class="star four">
+            ✦
+        </div>
+
+
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                DEEP AWARENESS · CONTACTO
+            </div>
+
+
+            <h1>
+
+                Vamos
+                <br>
+
+                <em>conversar.</em>
+
+            </h1>
+
+
+            <div class="hero-line"></div>
+
+
+            <p>
+
+                O primeiro passo não precisa de ser grande.
+                Às vezes começa apenas com uma pergunta,
+                uma mensagem ou a decisão de parar por um
+                momento e olhar para dentro.
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACTOS
+    ====================================================== -->
+
+    <section class="contact-section">
+
+
+        <div class="contact-container">
+
+
+            <div class="section-label">
+                COMO ENTRAR EM CONTACTO
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <!-- EMAIL -->
+
+<div class="contact-card">
+
+    <div class="contact-number">
+        01
+    </div>
+
+    <h3>
+        Email
+    </h3>
+
+    <a href="mailto:emgfvaz@gmail.com">
+        emgfvaz@gmail.com
+    </a>
+
+</div>
+
+
+<!-- TELEFONE -->
+
+<div class="contact-card">
+
+    <div class="contact-number">
+        02
+    </div>
+
+    <h3>
+        Telefone
+    </h3>
+
+    <a href="tel:+351918687641">
+        918 687 641
+    </a>
+
+</div>
+
+
+<!-- INSTAGRAM -->
+
+<div class="contact-card">
+
+    <div class="contact-number">
+        03
+    </div>
+
+    <h3>
+        Instagram
+    </h3>
+
+    <a
+        href="https://www.instagram.com/eldamariagomesfernandes/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        @eldamariagomesfernandes
+    </a>
+
+</div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FRASE
+    ====================================================== -->
+
+    <section class="quote">
+
+
+        <div class="quote-symbol">
+            “
+        </div>
+
+
+        <h2>
+
+            Existe sempre um espaço
+            <br>
+
+            entre aquilo que sentimos
+            <br>
+
+            e aquilo que
+            <em>podemos transformar.</em>
+
+        </h2>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta">
+
+
+        <div class="eyebrow">
+            CONSULTAS ONLINE
+        </div>
+
+
+        <h2>
+
+            O teu ritmo.
+            <br>
+
+            <em>O teu espaço.</em>
+
+        </h2>
+
+
+        <p>
+
+            As consultas são realizadas online,
+            num espaço seguro, individual e
+            respeitador do teu próprio ritmo.
+
+        </p>
+
+
+        <a
+            href="index.html"
+            class="back-button"
+        >
+
+            VOLTAR AO INÍCIO
+
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        DEEP AWARENESS
+        ·
+        HIPNOTERAPIA ERICKSONIANA
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           MENU
+        ====================================================== */
+
+        const menuOpen =
+            document.getElementById("menuOpen");
+
+
+        const menuClose =
+            document.getElementById("menuClose");
+
+
+        const menuOverlay =
+            document.getElementById("menuOverlay");
+
+
+        menuOpen.addEventListener(
+            "click",
+            function () {
+
+                menuOverlay.classList.add("open");
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
+
+
+        menuClose.addEventListener(
+            "click",
+            function () {
+
+                menuOverlay.classList.remove("open");
+
+                document.body.style.overflow =
+                    "";
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(".menu-links a")
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            menuOverlay
+                                .classList
+                                .remove("open");
+
+                            document.body.style.overflow =
+                                "";
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           NAVBAR
+        ====================================================== */
+
+        const nav =
+            document.querySelector(".nav");
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 50) {
+
+                    nav.classList.add("scrolled");
+
+                } else {
+
+                    nav.classList.remove("scrolled");
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
